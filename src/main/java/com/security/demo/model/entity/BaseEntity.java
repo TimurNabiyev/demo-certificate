@@ -1,5 +1,6 @@
 package com.security.demo.model.entity;
 
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.SequenceGenerator;
 import lombok.Getter;
@@ -14,13 +15,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @MappedSuperclass
-@SequenceGenerator(name = "base_seq", allocationSize = 1, initialValue = 5)
 public abstract class BaseEntity<T extends Serializable> extends AbstractPersistable<T> {
 
     @CreationTimestamp
     protected LocalDateTime createDate;
 
     @UpdateTimestamp
-    protected LocalDateTime lastModifiedDate;
+    protected LocalDateTime lastUpdateDate;
 
 }

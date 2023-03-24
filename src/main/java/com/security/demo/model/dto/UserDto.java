@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
  * A DTO for the {@link com.security.demo.model.entity.User} entity
  */
 public record UserDto(Long id,
-                      LocalDateTime createDate,
-                      LocalDateTime lastModifiedDate,
-                      String userName,
+                      String username,
                       String password,
                       String firstName,
-                      @JsonIgnore String lastName,
-                      @JsonIgnore LocalDateTime dob) implements Serializable {
+                      String lastName,
+                      LocalDateTime dob,
+                      @JsonIgnore LocalDateTime createDate,
+                      @JsonIgnore LocalDateTime lastUpdateDate) implements Serializable {
 }
