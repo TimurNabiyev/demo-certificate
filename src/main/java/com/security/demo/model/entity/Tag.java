@@ -10,12 +10,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Table(name = "tag")
-public class Tag {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tag_id", nullable = false)
-    private Long id;
+public class Tag extends BaseEntity<Long> {
 
+    @Column(unique = true, nullable = false)
     private String name;
 
 }

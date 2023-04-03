@@ -4,32 +4,32 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @Table(name = "gift_certificate")
-public class GiftCertificate {
+public class GiftCertificate extends BaseEntityAudit<Long> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "gift_certificate_id", nullable = false)
-    private Long id;
-
+    @Column(unique = true, nullable = false)
     private String name;
+
     private String description;
-    private Integer price;
-    private Integer duration;
 
-    @CreationTimestamp
-    private LocalDate createDate;
+    @Column(nullable = false)
+    private BigDecimal price;
 
-    @UpdateTimestamp
-    private LocalDate lastUpdateDate;
+    @Column(nullable = false)
+    private LocalDateTime expirationDate;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "certificate_has_tag",
+            joinColumns = @JoinColumn(name = "certificate_id", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id", nullable = false))
+    private List<Tag> tags;
 }

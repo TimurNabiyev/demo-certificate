@@ -5,20 +5,22 @@ import com.security.demo.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/tag")
+@RequestMapping("/api/v1/tag")
 public class TagController {
 
     private final TagService tagService;
 
     @PostMapping
-    public TagDto create(@RequestBody TagDto tagDto) {
-        return tagService.create(tagDto);
+    public List<TagDto> create(@RequestBody List<TagDto> tagDtos) {
+        return tagService.create(tagDtos);
     }
 
     @GetMapping("/{id}")
-    public TagDto getOne(@PathVariable Long id) {
-        return tagService.getOne(id);
+    public List<TagDto> getAll() {
+        return tagService.getAll();
     }
 }

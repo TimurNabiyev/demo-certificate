@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/gift-certificate")
+@RequestMapping("/api/v1/gift-certificate")
 public class GiftCertificateController {
 
     private final GiftCertificateService giftCertificateService;

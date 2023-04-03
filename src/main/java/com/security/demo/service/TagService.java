@@ -2,7 +2,9 @@ package com.security.demo.service;
 
 import com.security.demo.model.dto.TagDto;
 
+import java.util.List;
+
 public interface TagService {
-    TagDto create(TagDto tagDto);
-    TagDto getOne(Long id);
+    List<TagDto> create(List<TagDto> tagDto);
+    List<TagDto> getAll();
 }

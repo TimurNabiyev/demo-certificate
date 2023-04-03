@@ -1,6 +1,6 @@
 package com.security.demo.service.impl;
 
-import com.security.demo.mapper.GiftCertificateMapper;
+import com.security.demo.mapper.dto.GiftCertificateMapper;
 import com.security.demo.model.dto.GiftCertificateDto;
 import com.security.demo.model.entity.GiftCertificate;
 import com.security.demo.repository.GiftCertificateRepository;
