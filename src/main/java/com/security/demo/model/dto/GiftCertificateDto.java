@@ -16,6 +16,7 @@ public record GiftCertificateDto(Long id,
                                  BigDecimal price,
                                  LocalDateTime expirationDate,
                                  List<TagDto> tags,
+                                 @JsonIgnore Boolean isEnabled,
                                  @JsonIgnore LocalDateTime createDate,
                                  @JsonIgnore LocalDateTime lastUpdateDate) implements Serializable {
 }

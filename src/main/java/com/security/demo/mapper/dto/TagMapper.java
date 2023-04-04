@@ -8,5 +8,5 @@ import com.security.demo.model.entity.Tag;
 import org.mapstruct.Mapper;
 
 @Mapper(config = AppMapperConfig.class)
-public interface TagMapper extends EntityMapper<Tag, TagDto>, DtoMapper<TagDto, Tag> {
+public interface TagMapper extends DtoMapper<TagDto, Tag>, EntityMapper<Tag, TagDto> {
 }

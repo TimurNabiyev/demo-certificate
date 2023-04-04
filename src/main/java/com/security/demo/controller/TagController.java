@@ -1,8 +1,11 @@
 package com.security.demo.controller;
 
 import com.security.demo.model.dto.TagDto;
+import com.security.demo.model.request.TagCreateRequest;
 import com.security.demo.service.TagService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +18,11 @@ public class TagController {
     private final TagService tagService;
 
     @PostMapping
-    public List<TagDto> create(@RequestBody List<TagDto> tagDtos) {
-        return tagService.create(tagDtos);
+    public ResponseEntity<List<TagDto>> create(@RequestBody TagCreateRequest tagCreateRequest) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(tagService.create(tagCreateRequest));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping
     public List<TagDto> getAll() {
         return tagService.getAll();
     }

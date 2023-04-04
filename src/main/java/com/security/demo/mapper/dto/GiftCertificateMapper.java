@@ -8,6 +8,6 @@ import com.security.demo.model.entity.GiftCertificate;
 import org.mapstruct.Mapper;
 
 @Mapper(config = AppMapperConfig.class)
-public interface GiftCertificateMapper extends EntityMapper<GiftCertificate, GiftCertificateDto>,
-        DtoMapper<GiftCertificateDto, GiftCertificate> {
+public interface GiftCertificateMapper extends DtoMapper<GiftCertificateDto, GiftCertificate>,
+        EntityMapper<GiftCertificate, GiftCertificateDto> {
 }

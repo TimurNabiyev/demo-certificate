@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -32,4 +33,26 @@ public class GiftCertificate extends BaseEntityAudit<Long> {
             joinColumns = @JoinColumn(name = "certificate_id", referencedColumnName = "id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id", nullable = false))
     private List<Tag> tags;
+
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
+    Boolean isEnabled;
+
+    @PrePersist
+    private void onCreate() {
+        isEnabled = true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        GiftCertificate that = (GiftCertificate) o;
+        return Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(price, that.price) && Objects.equals(expirationDate, that.expirationDate) && Objects.equals(tags, that.tags) && Objects.equals(isEnabled, that.isEnabled);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name, description, price, expirationDate, tags, isEnabled);
+    }
 }
