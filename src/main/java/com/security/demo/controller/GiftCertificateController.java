@@ -2,6 +2,7 @@ package com.security.demo.controller;
 
 import com.security.demo.model.dto.GiftCertificateDto;
 import com.security.demo.model.request.GiftCertificateCreateRequest;
+import com.security.demo.model.request.GiftCertificateUpdateRequest;
 import com.security.demo.service.GiftCertificateService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,4 +26,21 @@ public class GiftCertificateController {
     public GiftCertificateDto getOne(@PathVariable Long id) {
         return giftCertificateService.getOne(id);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<GiftCertificateDto> updateOne(@RequestBody GiftCertificateUpdateRequest request,
+                                                        @PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(giftCertificateService.updateOne(request, id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<GiftCertificateDto> deleteOne(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(giftCertificateService.deleteOne(id));
+    }
+
+    @DeleteMapping(params = "name")
+    public ResponseEntity<GiftCertificateDto> deleteOne(@RequestBody String name) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(giftCertificateService.deleteOne(name));
+    }
+
 }

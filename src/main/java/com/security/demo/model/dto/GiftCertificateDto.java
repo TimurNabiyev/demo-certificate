@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public record GiftCertificateDto(Long id,
                                  String name,
                                  String description,
                                  BigDecimal price,
-                                 LocalDateTime expirationDate,
+                                 LocalDate expirationDate,
                                  List<TagDto> tags,
                                  @JsonIgnore Boolean isEnabled,
                                  @JsonIgnore LocalDateTime createDate,
